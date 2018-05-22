@@ -1,22 +1,20 @@
 package com.example.hannahkim.movieharmony;
 
-import android.widget.ImageView;
-
 public class ListViewItem {
 
-    private ImageView icon;
+    private int image;
     private String name;
 
-    public ImageView getIcon() {
-        return icon;
+    public int getImage() {
+        return image;
     }
 
     public String getName() {
         return name;
     }
 
-    public ListViewItem(ImageView icon, String name) {
-        this.icon = icon;
+    public ListViewItem(int image, String name) {
+        this.image = image;
         this.name=  name;
     }
 
