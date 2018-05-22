@@ -20,12 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent();
 
-        listView.setOnItemClickListener(new AdapterView.OnClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListView listView1 = (ListView) parent;
 
 
             }
-        });
+        });*/
     }
 }
