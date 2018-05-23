@@ -1,6 +1,5 @@
 package com.example.hannahkim.movieharmony;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter {
+public class MovieAdapter extends BaseAdapter {
 
     Context context;
-    private ArrayList<ListViewItem> items;
+    private ArrayList<MovieItem> items;
     private int layout;
     LayoutInflater layoutInflater;
 
-    MyAdapter(Context context, int layout, ArrayList<ListViewItem> items) {
+    MovieAdapter(Context context, int layout, ArrayList<MovieItem> items) {
         this.context = context;
         this.items = items;
         this.layout = layout;
@@ -42,7 +41,7 @@ public class MyAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(layout, null);
         }
 
-        ListViewItem listViewItem = items.get(position);
+        MovieItem listViewItem = items.get(position);
 
         ImageView image = (ImageView)convertView.findViewById(R.id.imageView);
         image.setImageResource(listViewItem.image);

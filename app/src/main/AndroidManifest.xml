@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Theater" />
+        <activity android:name=".TheaterActivity" />
+        <activity android:name=".DetailActivity"></activity>
     </application>
 
 </manifest>

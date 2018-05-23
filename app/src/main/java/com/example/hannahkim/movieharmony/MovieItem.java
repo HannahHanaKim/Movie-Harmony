@@ -1,14 +1,14 @@
 package com.example.hannahkim.movieharmony;
 
-public class ListViewItem {
+public class MovieItem {
 
     int image;
     String name="";
 
-    public ListViewItem(int image, String name) {
+    public MovieItem(int image, String name) {
         super();
         this.image = image;
         this.name=  name;
     }
-    public ListViewItem() {}
+    public MovieItem() {}
 }
