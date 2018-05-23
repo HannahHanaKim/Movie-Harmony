@@ -2,20 +2,13 @@ package com.example.hannahkim.movieharmony;
 
 public class ListViewItem {
 
-    private int image;
-    private String name;
-
-    public int getImage() {
-        return image;
-    }
-
-    public String getName() {
-        return name;
-    }
+    int image;
+    String name="";
 
     public ListViewItem(int image, String name) {
+        super();
         this.image = image;
         this.name=  name;
     }
-
+    public ListViewItem() {}
 }

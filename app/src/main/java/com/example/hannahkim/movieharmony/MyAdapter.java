@@ -16,11 +16,13 @@ public class MyAdapter extends BaseAdapter {
     Context context;
     private ArrayList<ListViewItem> items;
     private int layout;
+    LayoutInflater layoutInflater;
 
     MyAdapter(Context context, int layout, ArrayList<ListViewItem> items) {
         this.context = context;
         this.items = items;
         this.layout = layout;
+        layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public int getCount() {
@@ -36,18 +38,17 @@ public class MyAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if(convertView == null) {
-            convertView = inflater.inflate(layout, null);
+            convertView = layoutInflater.inflate(layout, null);
         }
 
         ListViewItem listViewItem = items.get(position);
 
         ImageView image = (ImageView)convertView.findViewById(R.id.imageView);
-        image.setImageResource(listViewItem.getImage());
+        image.setImageResource(listViewItem.image);
 
         TextView name = (TextView)convertView.findViewById(R.id.textView);
-        name.setText(listViewItem.getName());
+        name.setText(listViewItem.name);
 
         return convertView;
     }

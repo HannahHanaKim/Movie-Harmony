@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView)findViewById(R.id.listView);
 
-        data.add(new ListViewItem(R.drawable.movie_1, "movie_1"));
-        data.add(new ListViewItem(R.drawable.movie_2, "movie_2"));
-        data.add(new ListViewItem(R.drawable.movie_3, "movie_3"));
-        data.add(new ListViewItem(R.drawable.movie_4, "movie_4"));
-        data.add(new ListViewItem(R.drawable.movie_5, "movie_5"));
+        data.add(new ListViewItem(R.drawable.movie_1, "데드풀 2"));
+        data.add(new ListViewItem(R.drawable.movie_2, "어벤져스: 인피니티 워"));
+        data.add(new ListViewItem(R.drawable.movie_3, "버닝"));
+        data.add(new ListViewItem(R.drawable.movie_4, "피터 래빗"));
+        data.add(new ListViewItem(R.drawable.movie_5, "독전"));
 
         MyAdapter adapter = new MyAdapter(this, R.layout.item, data);
         listView.setAdapter(adapter);
@@ -34,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "send msg: " + data.get(position).name, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), Theater.class);
-                intent.putExtra("movie_name", data.get(position).getName());
+                intent.putExtra("image", data.get(position).image);
+                intent.putExtra("movie_name", data.get(position).name);
                 startActivity(intent);
             }
         });
