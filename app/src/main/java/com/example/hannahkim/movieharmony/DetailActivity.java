@@ -45,15 +45,15 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         theaterName = (TextView)findViewById(R.id.theaterName);
-
-        Intent intent = getIntent();
-        theaterName.setText(intent.getStringExtra("theater_name") +" - "+ intent.getStringExtra("selectedMovie"));
-
         textView = (TextView)findViewById(R.id.textView);
         loadBtn = (Button)findViewById(R.id.loadBtn);
         movieImage=(ImageView)findViewById(R.id.imageView);
 
+
+        Intent intent = getIntent();
+        theaterName.setText(intent.getStringExtra("theater_name") +" - "+ intent.getStringExtra("selectedMovie"));
         movieImage.setImageResource(intent.getIntExtra("movieImage",0));
+
 
         loadBtn.setOnClickListener(new View.OnClickListener() {//onclicklistener를 연결하여 터치시 실행됨
             @Override
