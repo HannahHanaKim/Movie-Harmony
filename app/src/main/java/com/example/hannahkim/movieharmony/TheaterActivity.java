@@ -33,12 +33,6 @@ public class TheaterActivity extends AppCompatActivity {
 
         ListView theaterList = (ListView)findViewById(R.id.theaterList);
 
-        /*theaterItems.add(new TheaterItem("CGV 서현"));
-        theaterItems.add(new TheaterItem("CGV 야탑"));
-        theaterItems.add(new TheaterItem("CGV 오리"));
-        theaterItems.add(new TheaterItem("CGV 판교"));
-        theaterItems.add(new TheaterItem("메가박스 분당"));*/
-
         ArrayAdapter<String> theaterAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, theaterItems);
         theaterList.setAdapter(theaterAdapter);
 
@@ -58,6 +52,7 @@ public class TheaterActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
                 intent.putExtra("theater_name", theaterItems[position]);
                 intent.putExtra("selectedMovie", selectedMovie.getText().toString());
+                intent.putExtra("movieImage", getIntent().getIntExtra("image", 0));
                 startActivity(intent);
             }
         });
