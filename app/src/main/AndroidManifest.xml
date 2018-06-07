@@ -27,7 +27,9 @@
         <activity
             android:name=".Fragments"
             android:label="@string/title_activity_fragments"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MovieActivity" />
+        <activity android:name=".DetailActivity"></activity>
     </application>
 
 </manifest>
