@@ -3,15 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/movie_theater"
     >
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#ffcc22"
-        android:dividerHeight="1.5dp"
-        android:choiceMode="singleChoice">
-    </ListView>
+    <Button
+        android:id="@+id/closeTheaterBtn"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="가까운 영화관 탐색"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="230dp"/>
+
+    <Button
+        android:id="@+id/selectTheaterBtn"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="직접 영화관 선택"
+        android:textSize="20dp"
+        android:layout_gravity="center"/>
+
 
 </LinearLayout>

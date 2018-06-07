@@ -3,11 +3,12 @@
     package="com.example.hannahkim.movieharmony">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION/" />
 
     <application
-
         android:allowBackup="true"
-        android:icon="@drawable/Intro"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -20,8 +21,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".TheaterActivity" />
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".SelectTheater" />
+        <activity android:name=".ClosestTheater" />
+        <activity android:name=".TheaterMap" />
+        <activity
+            android:name=".Fragments"
+            android:label="@string/title_activity_fragments"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
