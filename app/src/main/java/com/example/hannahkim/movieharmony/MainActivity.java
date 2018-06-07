@@ -1,22 +1,35 @@
 package com.example.hannahkim.movieharmony;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-//import android.widget.Toast;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    //파싱할 홈페이지 주소
+    private String url = "http://www.cgv.co.kr/movies/";
+    Elements content;
+    ArrayList<HashMap<ImageView, String>>arrayList;
 
+    MovieAdapter adapter;
+    ListView listView;
     ArrayList<MovieItem> data = new ArrayList<>();
 
     @Override
@@ -24,29 +37,59 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = (ListView)findViewById(R.id.listView);
+        new JsoupListView().execute();
+        listView = (ListView)findViewById(R.id.listView);
 
-        //크롤링 정보
-        data.add(new MovieItem(R.drawable.movie_1, "데드풀 2"));
-        data.add(new MovieItem(R.drawable.movie_2, "어벤져스: 인피니티 워"));
-        data.add(new MovieItem(R.drawable.movie_3, "버닝"));
-        data.add(new MovieItem(R.drawable.movie_4, "피터 래빗"));
-        data.add(new MovieItem(R.drawable.movie_5, "독전"));
-
-        MovieAdapter adapter = new MovieAdapter(this, R.layout.movie_name_items, data);
-        listView.setAdapter(adapter);
+        /*data.add(new MovieItem(R.drawable.movie_1, "데드풀 2"));*/
 
         //listView click event handling
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getApplicationContext(), "send msg: " + data.get(position).name, Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(getApplicationContext(), TheaterActivity.class);
-                intent.putExtra("image", data.get(position).image);
+                intent.putExtra("image", data.get(position).imgSrc);
                 intent.putExtra("movie_name", data.get(position).name);
                 startActivity(intent);
             }
         });
+    } //onCreate
+
+    private class JsoupListView extends AsyncTask<Void, Void, Void> {
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        protected Void doInBackground(Void...params) {
+           // arrayList = new ArrayList<HashMap<String, String>>();
+
+            try {
+                //connect to the Website URL
+                Document doc = Jsoup.connect(url).get();
+                content = doc.select("div.sect-movie-chart");
+
+                for(Element movies : content) { //only top 5 movies
+                    String imgSrc = doc.select("img").attr("src");
+                    String name = doc.select("strong").text();
+                    //String src = movies.absUrl("src");
+
+                    //change image element to imageView
+                    data.add(new MovieItem(imgSrc, name));
+
+                }
+                //Elements image = doc.select("span.thumb-image img");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
+    protected void onPostExecute(Void result) {
+        listView = (ListView)findViewById(R.id.listView);
+        adapter = new MovieAdapter(MainActivity.this, data);
+        listView.setAdapter(adapter);
     }
 }

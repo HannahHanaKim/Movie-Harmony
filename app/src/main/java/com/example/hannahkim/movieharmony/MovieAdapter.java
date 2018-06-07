@@ -9,46 +9,51 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MovieAdapter extends BaseAdapter {
 
     Context context;
-    private ArrayList<MovieItem> items;
-    private int layout;
-    LayoutInflater layoutInflater;
+    LayoutInflater inflater;
+    ArrayList<MovieItem> data;
+    //ImageLoader imageLoader;
 
-    MovieAdapter(Context context, int layout, ArrayList<MovieItem> items) {
+    HashMap<String, String> resultp = new HashMap<String, String>();
+
+    public MovieAdapter(Context context, ArrayList<MovieItem> arrayList) {
         this.context = context;
-        this.items = items;
-        this.layout = layout;
-        layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        data = arrayList;
+        //imageLoader = new ImageLoader(context);
     }
 
     public int getCount() {
-        return items.size();
+        return data.size();
     }
 
     public Object getItem(int position) {
-        return items.get(position);
+        return null;
     }
 
     public long getItemId(int position) {
-        return position;
+        return 0;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null) {
-            convertView = layoutInflater.inflate(layout, null);
-        }
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        ImageView imageView;
+        TextView textView;
 
-        MovieItem listViewItem = items.get(position);
+        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        ImageView image = (ImageView)convertView.findViewById(R.id.imageView);
-        image.setImageResource(listViewItem.image);
+        View itemView = inflater.inflate(R.layout.listview_item, parent, false);
 
-        TextView name = (TextView)convertView.findViewById(R.id.textView);
-        name.setText(listViewItem.name);
+        //resultp = data.get(position);
 
-        return convertView;
+        imageView = (ImageView)itemView.findViewById(R.id.imageView);
+        textView = (TextView)itemView.findViewById(R.id.textView);
+
+        //textView.setText(resultp.get(MainActivity.MOVIE_NAME));
+
+        return itemView;
+
     }
 }

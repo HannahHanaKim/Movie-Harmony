@@ -22,11 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="상영 정보 불러오기"
-        android:id="@+id/loadBtn"/>
+        android:id="@+id/loadBtn"
+        android:layout_gravity="center"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <TextView
             android:layout_width="match_parent"

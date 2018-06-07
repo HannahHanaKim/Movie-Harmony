@@ -1,13 +1,17 @@
 package com.example.hannahkim.movieharmony;
 
+import android.widget.ImageView;
+
+import org.jsoup.select.Elements;
+
 public class MovieItem {
 
-    int image;
+    String imgSrc;
     String name="";
 
-    public MovieItem(int image, String name) {
+    public MovieItem(String imgSrc, String name) {
         super();
-        this.image = image;
+        this.imgSrc = imgSrc;
         this.name=  name;
     }
     public MovieItem() {}

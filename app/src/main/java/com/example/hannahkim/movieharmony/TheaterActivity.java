@@ -37,8 +37,8 @@ public class TheaterActivity extends AppCompatActivity {
         theaterList.setAdapter(theaterAdapter);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    @Override
+                    public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();

@@ -34,7 +34,7 @@ public class DetailActivity extends AppCompatActivity {
     String seat_count="";
     String movie_time="";
 
-    int date=20180523; //날짜: 과거 날짜의 경우 인터넷에선 현재 주소로 바꿔버린다.
+    int date=20180607; //날짜: 과거 날짜의 경우 인터넷에선 현재 주소로 바꿔버린다.
     String url="http://www.cgv.co.kr/common/showtimes/iframeTheater.aspx?areacode=01&theatercode=0196&date=\"+date+\"&screencodes=&screenratingcode=&regioncode=";
 
     String str=""; // 결과를 저장할 문자열 변수
@@ -77,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
 
                                 if(movie_name.equals(getIntent().getStringExtra("selectedMovie")))
                                 {
-                                    str+=movie_name+"\n";
+                                    str += movie_name+"\n";
                                     tags = timetable.select("div.info-timetable"); //영화 상영시간표
                                     for (Element tag : tags) {
                                         li_tags = tag.select("ul li");
