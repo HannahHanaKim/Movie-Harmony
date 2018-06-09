@@ -9,7 +9,7 @@
         android:id="@+id/gifImageView"
         android:scaleType="fitCenter"
         android:layout_width="500dp"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
        />
 
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Movie Harmony"
-        android:textColor="#8014d2"
+        android:textColor="#9c2513"
         android:textSize="50dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -34,6 +34,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:indeterminateTint="#a45be1"/>
+        android:indeterminateTint="#e15b5f"/>
 
 </RelativeLayout>

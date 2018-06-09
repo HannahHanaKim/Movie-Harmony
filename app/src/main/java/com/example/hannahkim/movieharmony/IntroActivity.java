@@ -33,7 +33,7 @@ public class IntroActivity extends BaseActivity {
 
         //set GIFImageView resource
         try {
-            InputStream inputStream = getAssets().open("lightBulb.gif");
+            InputStream inputStream = getAssets().open("image1.gif");
             byte[] bytes = IOUtils.toByteArray(inputStream);
             gifImageView.setBytes(bytes);
             gifImageView.startAnimation();
@@ -47,6 +47,6 @@ public class IntroActivity extends BaseActivity {
                 IntroActivity.this.startActivity(new Intent(IntroActivity.this, MainActivity.class));
                 IntroActivity.this.finish();
             }
-        }, 3000); //3000ms = 3seconds
+        }, 4500); //3000ms = 3seconds
     }
 }

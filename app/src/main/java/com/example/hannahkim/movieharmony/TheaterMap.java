@@ -1,9 +1,10 @@
 package com.example.hannahkim.movieharmony;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
+
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,44 +17,56 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 public class TheaterMap extends Fragment implements OnMapReadyCallback {
 
-    double d1, d2;
+    private double d1;
+    private double d2;
+
 
     public TheaterMap() {
-
+        // Required empty public constructor
     }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if(getArguments() != null) {
-            d1 = getArguments().getDouble("input1");
-            d2 = getArguments().getDouble("input2");
-        }
-    }
 
+    @Nullable
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.activity_theater_map, container, false);
 
-        SupportMapFragment mapFragment = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        // Inflate the layout for this fragment
 
         return view;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng U_Location = new LatLng(d1, d2);
-        MarkerOptions marker_user = new MarkerOptions();
-        marker_user.position(U_Location);
-        marker_user.title("내 위치");
+    public void displayReceivedData(double data1, double data2) {
 
-        Marker userLocation = googleMap.addMarker(marker_user); //여기 코드 다름!
-        userLocation.showInfoWindow();
+        this.d1 = data1;
+        this.d2 = data2;
 
-        /* 여기 코드 다 다름! */
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(U_Location));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
+
+
+
+    @Override
+    public void onMapReady(final GoogleMap map) {
+        map.clear();
+        LatLng U_LOCATION = new LatLng(this.d1,this.d2);
+        MarkerOptions marker_user = new MarkerOptions();
+        marker_user.position(U_LOCATION);
+        marker_user.title("내 위치");
+        //markerOptions.snippet("부연설명");
+        Marker user_location = map.addMarker(marker_user);
+        user_location.showInfoWindow();
+
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(U_LOCATION,14));
+
+    }
+
+
+
 }

@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
-public class SelectTheater extends AppCompatActivity {
+public class SelectTheater extends BaseActivity {
 
     ImageButton cgvBtn, megaboxBtn;
 

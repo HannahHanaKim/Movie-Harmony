@@ -32,12 +32,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- tabItem1: 근처 영화관 -->
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Theaters"/>
 
+            <!-- 지도로 보기 -->
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"

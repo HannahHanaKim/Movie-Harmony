@@ -3,7 +3,7 @@ package com.example.hannahkim.movieharmony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MovieActivity extends AppCompatActivity {
+public class MovieActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
